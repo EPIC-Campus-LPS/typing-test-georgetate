@@ -2,19 +2,25 @@ from time import time
 
 prompt = "Set your minds on things that are above, not on things that are on earth. Colossians 3:2"
 
-
-while True:
-    start = time()
-    print(prompt)
-    response = input()
-
-    if response == prompt:
-        break
-    else:
-        print("incorrect, time restarted")
+# timer
+start = time()
+print(prompt)
+response = input()
 stop = time()
-
 
 timespan = (stop - start) / 60
 wordcount = len(prompt.split(" "))
-print(f"{round(wordcount/timespan)} WPM")
+WordsPerMinute = round(wordcount/timespan)
+
+if response == prompt:
+    print(f"WPM: {WordsPerMinute}\nMistakes: 0")
+else:
+    mistakes = 0
+    for i in range(len(prompt)):
+        if response[i] != prompt[i]:
+            mistakes += 1
+    print(f"WPM: {WordsPerMinute}\nMistakes: {mistakes}")
+
+
+
+
